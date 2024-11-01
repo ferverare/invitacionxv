@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Invitación Interactiva</title>
+    <style>
+        /* Estilo básico y responsivo */
+        body {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            min-height: 100vh;
+            font-family: Arial, sans-serif;
+            background-color: #f7f7f7;
+            margin: 0;
+        }
+        #video-container {
+            position: relative;
+            width: 100%;
+            max-width: 600px;
+        }
+        video {
+            width: 100%;
+            height: auto;
+        }
+        #icono-enlace {
+            display: none;
+            position: absolute;
+            bottom: 10px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 30%;
+            margin: 0 auto;
+        }
+        /* Ajuste de tamaño del icono para dispositivos móviles */
+        @media (max-width: 600px) {
+            #icono-enlace {
+                width: 40px;
+                height: 40px;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Contenedor del video con el ícono superpuesto -->
+    <div id="video-container">
+        <video id="video" autoplay muted>
+            <source src="https://mymarketcorp.com/mym-admin/uploads/video1.mp4" type="video/mp4">
+            Tu navegador no soporta la reproducción de video.
+        </video>
+        <!-- Enlace de ubicación con el ícono superpuesto abajo y centrado -->
+        <a href="https://maps.google.com?q=tu-ubicacion" target="_blank" id="icono-enlace">
+            <img src="https://cdn-icons-png.freepik.com/512/4616/4616040.png" width="220" alt="Ubicación">
+        </a>
+    </div>
+
+    <script>
+        // Seleccionar elementos
+        const video = document.getElementById('video');
+        const iconoEnlace = document.getElementById('icono-enlace');
+
+        // Reproducción automática del video (autoplay)
+        video.play();
+
+        // Mostrar el icono de enlace a los 15 segundos
+        setTimeout(() => {
+            iconoEnlace.style.display = 'block';
+        }, 15000); // 15000 ms = 15 segundos
+    </script>
+
+</body>
+</html>
