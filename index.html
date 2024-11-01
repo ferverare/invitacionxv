@@ -25,14 +25,27 @@
             width: 100%;
             height: auto;
         }
-        #icono-enlace {
+        /* Fondo púrpura para resaltar el ícono cuando el video termine */
+        .overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: #80008087;
             display: none;
-            position: absolute;
-            bottom: 10px;
-            left: 50%;
-            transform: translateX(-50%);
-            width: 30%;
+            align-items: center;
+            justify-content: center;
+        }
+        /* Estilo de la tabla */
+        table {
+            border-collapse: collapse;
+            width: 760px;
             margin: 0 auto;
+        }
+        td {
+            text-align: center;
+            padding: 20px;
         }
         /* Ajuste de tamaño del icono para dispositivos móviles */
         @media (max-width: 600px) {
@@ -51,24 +64,36 @@
             <source src="https://mymarketcorp.com/mym-admin/uploads/video1.mp4" type="video/mp4">
             Tu navegador no soporta la reproducción de video.
         </video>
-        <!-- Enlace de ubicación con el ícono superpuesto abajo y centrado -->
-        <a href="https://maps.google.com?q=tu-ubicacion" target="_blank" id="icono-enlace">
-            <img src="https://cdn-icons-png.freepik.com/512/4616/4616040.png" width="220" alt="Ubicación">
-        </a>
+    </div>
+
+    <!-- Fondo púrpura y tabla con título e ícono de ubicación -->
+    <div class="overlay" id="overlay">
+        <table border="0" cellpadding="0" cellspacing="0">
+            <tbody>
+                <tr>
+                    <td>
+                        <h2 style="color: white; margin: 0;">Ubicación</h2>
+                        <a href="https://maps.google.com?q=tu-ubicacion" target="_blank" id="icono-enlace">
+                            <img src="https://cdn-icons-png.freepik.com/512/4616/4616040.png" width="100" alt="Ubicación">
+                        </a>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
     </div>
 
     <script>
         // Seleccionar elementos
         const video = document.getElementById('video');
-        const iconoEnlace = document.getElementById('icono-enlace');
+        const overlay = document.getElementById('overlay');
 
         // Reproducción automática del video (autoplay)
         video.play();
 
-        // Mostrar el icono de enlace a los 15 segundos
-        setTimeout(() => {
-            iconoEnlace.style.display = 'block';
-        }, 15000); // 15000 ms = 15 segundos
+        // Mostrar el fondo púrpura y la tabla con el ícono cuando el video termine
+        video.addEventListener('ended', () => {
+            overlay.style.display = 'flex';
+        });
     </script>
 
 </body>
